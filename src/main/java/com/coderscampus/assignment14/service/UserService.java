@@ -18,4 +18,10 @@ public class UserService {
         return user;
     }
 
+    public User save(User user) {
+        userRepository.save(user);
+        System.out.println(user);
+        return user;
+    }
+
 }

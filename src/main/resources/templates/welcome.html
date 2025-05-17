@@ -7,11 +7,15 @@
 <body>
     <h1>Welcome</h1>
 
-    <form>
+    <form id="welcome-form" action="" method="post">
+        <input type="hidden" th:field="${user.id}" />
         <div>
-            Name: <input type="text">
+            Name: <input type="text" th:field="${user.name}" id="username">
         </div>
+        <p id="error-msg" style="color:red;"></p>
         <input type="submit" value="Enter">
     </form>
+
+    <script src="/javascript/welcome.js"></script>
 </body>
 </html>
