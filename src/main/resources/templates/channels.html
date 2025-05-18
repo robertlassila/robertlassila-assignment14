@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Channel</title>
+</head>
+<body>
+    <div id="message-display" th:each="message : ${allMessages}">
+        <span th:text="${message.content}"></span>
+    </div>
+    <form id="message-box" action="" method="post">
+        <input type="text" th:field="${message.content}">
+        <input type="submit" value="send">
+    </form>
+</body>
+</html>
