@@ -1,16 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Channel</title>
 </head>
 <body>
-    <div id="message-display" th:each="message : ${allMessages}">
-        <span th:text="${message.content}"></span>
+    <div th:if="${channel.id == null}">
+        <p>Directory</p>
+        <div th:each="channelItem : ${channelList}">
+            <a th:href="@{/channels/{channelId}(channelId=${channelItem.id})}"
+               th:text="${channelItem.name}"></a><br/>
+        </div>
     </div>
-    <form id="message-box" action="" method="post">
-        <input type="text" th:field="${message.content}">
-        <input type="submit" value="send">
-    </form>
+
+    <div th:if="${channel.id != null}">
+        <h3 th:text="'Channel: ' + ${channel.name}"></h3>
+
+        <div id="message-display" th:each="message : ${allMessages}">
+            <div th:if="${message.channel != null and message.channel.id == channel.id}">
+                <p th:text="${message.content}"></p>
+            </div>
+
+        </div>
+        <form th:action="@{/channels/{channelId}(channelId=${channel.id})}" method="post">
+            <input type="text" th:field="*{message.content}" placeholder="Type a message..." />
+            <input type="submit" value="Send" />
+        </form>
+    </div>
+
 </body>
 </html>

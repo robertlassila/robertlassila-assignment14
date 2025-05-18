@@ -12,9 +12,11 @@ public class Message {
     @ManyToOne
     @JoinColumn(name = "user_id")
     User user;
-    String channel;
+    @ManyToOne
+    @JoinColumn(name = "channel_id")
+    Channel channel;
 
-    public Message(Long id, String content, User user, String channel) {
+    public Message(Long id, String content, User user, Channel channel) {
         this.id = id;
         this.content = content;
         this.user = user;
@@ -47,11 +49,11 @@ public class Message {
         this.user = user;
     }
 
-    public String getChannel() {
+    public Channel getChannel() {
         return channel;
     }
 
-    public void setChannel(String channel) {
+    public void setChannel(Channel channel) {
         this.channel = channel;
     }
 }

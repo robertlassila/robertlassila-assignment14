@@ -9,5 +9,12 @@ document.getElementById("welcome-form").addEventListener("submit", function(even
         usernameInput.focus()
     } else {
         errorMsg.textContent = ""
+
+        sessionStorage.setItem("username", username);
+
+        // Redirect to /channels and prevent actual form submission
+        event.preventDefault();
+        window.location.href = "/channels";
+
     }
 })
