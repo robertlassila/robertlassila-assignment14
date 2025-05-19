@@ -67,12 +67,16 @@ public class UserController {
     }
 
     @PostMapping("/channels/{channelId}")
-    public String channelsPost(@PathVariable Long channelId, Message message) {
+    public String channelsPost(@PathVariable Long channelId, Message message, String username) {
         Optional<Channel> channelOpt = channelService.findById(channelId);
-        if (channelOpt.isPresent()) {
+        Optional<User> userOpt = userService.findByName(username);
+
+        if (channelOpt.isPresent() && userOpt.isPresent()) {
             message.setChannel(channelOpt.get());
+            message.setUser(userOpt.get());
             messageService.saveMessage(message);
         }
+        System.out.println(message.getUser().getName());
         return "redirect:/channels/" + channelId;
     }
 

@@ -18,11 +18,15 @@
 
         <div id="message-display" th:each="message : ${allMessages}">
             <div th:if="${message.channel != null and message.channel.id == channel.id}">
-                <p th:text="${message.content}"></p>
+                <div th:if="${message.user != null}">
+                    <p style="font-size: small" th:text="${message.user.name}"></p>
+                </div>
+                <p style="font-size: large" th:text="${message.content}"></p>
             </div>
 
         </div>
         <form th:action="@{/channels/{channelId}(channelId=${channel.id})}" method="post">
+            <input type="hidden" id="messageUsername" name="username" />
             <input type="text" th:field="*{message.content}" placeholder="Type a message..." />
             <input type="submit" value="Send" />
         </form>
