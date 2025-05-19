@@ -12,9 +12,6 @@ document.getElementById("welcome-form").addEventListener("submit", function(even
 
         sessionStorage.setItem("username", username);
 
-        // Redirect to /channels and prevent actual form submission
-        event.preventDefault();
-        window.location.href = "/channels";
 
     }
 })

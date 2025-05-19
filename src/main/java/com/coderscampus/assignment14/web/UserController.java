@@ -42,11 +42,6 @@ public class UserController {
         return "redirect:/channels";
     }
 
-    @GetMapping("/chat")
-    public String chat(ModelMap model) {
-        return "channeldirectory";
-    }
-
     @GetMapping("/channels")
     public String channels(ModelMap model) {
 
