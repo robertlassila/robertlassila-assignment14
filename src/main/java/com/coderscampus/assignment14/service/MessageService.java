@@ -1,5 +1,6 @@
 package com.coderscampus.assignment14.service;
 
+import com.coderscampus.assignment14.domain.Channel;
 import com.coderscampus.assignment14.domain.Message;
 import com.coderscampus.assignment14.repository.MessageRepository;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,9 @@ public class MessageService {
 
     public List<Message> findAll() {
         return messageRepository.findAll();
+    }
+
+    public List<Message> findByChannel(Channel channel) {
+        return messageRepository.findByChannel(channel);
     }
 }

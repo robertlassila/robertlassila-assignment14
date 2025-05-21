@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Channel</title>
 </head>
-<body>
+<body th:attr="data-channel-id=${channel.id}">
     <div th:if="${channel.id == null}">
         <p>Directory</p>
         <div th:each="channelItem : ${channelList}">
@@ -15,16 +15,18 @@
 
     <div th:if="${channel.id != null}">
         <h3 th:text="'Channel: ' + ${channel.name}"></h3>
-
-        <div id="message-display" th:each="message : ${allMessages}">
-            <div th:if="${message.channel != null and message.channel.id == channel.id}">
+        <input type="hidden" id="channelId" th:value="${channel.id}" />
+        <div id="message-display">
+            <div th:each="message : ${allMessages}"
+                th:if="${message.channel != null and message.channel.id == channel.id}"
+                th:attr="data-id=${message.id}">
                 <div th:if="${message.user != null}">
                     <p style="font-size: small" th:text="${message.user.name}"></p>
                 </div>
                 <p style="font-size: large" th:text="${message.content}"></p>
             </div>
-
         </div>
+
         <form th:action="@{/channels/{channelId}(channelId=${channel.id})}" method="post">
             <input type="hidden" id="messageUsername" name="username" />
             <input type="text" th:field="*{message.content}" placeholder="Type a message..." />

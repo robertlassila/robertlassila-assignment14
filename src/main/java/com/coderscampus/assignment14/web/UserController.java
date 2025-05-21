@@ -12,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +29,17 @@ public class UserController {
         this.messageService = messageService;
         this.channelService = channelService;
 
+    }
+
+    @GetMapping("/api/messages/{channelId}")
+    @ResponseBody
+    public List<Message> getMessagesForChannel(@PathVariable Long channelId) {
+        Optional<Channel> channelOpt = channelService.findById(channelId);
+        if (channelOpt.isPresent()) {
+            return messageService.findByChannel(channelOpt.get());
+        } else {
+            return List.of();
+        }
     }
 
     @GetMapping("/welcome")
@@ -89,8 +101,6 @@ public class UserController {
     model.put("message", new Message());
     return "channels";
 }
-
-
 
     @GetMapping("")
     public String sendToHome() {
