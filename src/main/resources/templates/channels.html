@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" style="background: linear-gradient(to bottom right, blue, #00803a, purple);">
 <head>
     <meta charset="UTF-8">
     <title>Channel</title>
+    <link rel="stylesheet" type="text/css" th:href="@{styles/general.css}">
 </head>
 <body th:attr="data-channel-id=${channel.id}">
     <div th:if="${channel.id == null}">
