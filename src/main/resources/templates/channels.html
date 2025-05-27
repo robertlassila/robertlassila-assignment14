@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" style="background: linear-gradient(to bottom right, blue, #00803a, purple);">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" style="background: linear-gradient(to bottom right, #020255, #00803a, purple);">
 <head>
     <meta charset="UTF-8">
     <title>Channel</title>
     <link rel="stylesheet" type="text/css" th:href="@{styles/general.css}">
 </head>
 <body th:attr="data-channel-id=${channel.id}">
-    <div th:if="${channel.id == null}">
-        <p>Directory</p>
+    <div th:if="${channel.id == null}" class="content">
+        <h1>Directory</h1>
         <div th:each="channelItem : ${channelList}">
             <a th:href="@{/channels/{channelId}(channelId=${channelItem.id})}"
                th:text="${channelItem.name}"></a><br/>
         </div>
     </div>
 
-    <div th:if="${channel.id != null}">
+    <div th:if="${channel.id != null}" class="content">
         <h3 th:text="'Channel: ' + ${channel.name}"></h3>
         <input type="hidden" id="channelId" th:value="${channel.id}" />
         <div id="message-display">
