@@ -88,13 +88,15 @@ public class UserController {
             message.setUser(userOpt.get());
             messageService.saveMessage(message);
         }
-        System.out.println(message.getUser().getName());
         return "redirect:/channels/" + channelId;
     }
 
     @GetMapping("/channels/{channelId}")
     public String channelId(ModelMap model, @PathVariable("channelId") Long id) {
     Optional<Channel> channel = channelService.findById(id);
+    if (channel.isEmpty()) {
+        return "channelError";
+    }
     model.put("channel", channel.get());
     model.put("channelList", channelService.findAll());
     model.put("allMessages", messageService.findAll());

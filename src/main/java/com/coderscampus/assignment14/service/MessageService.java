@@ -17,7 +17,6 @@ public class MessageService {
     }
 
     public Message saveMessage(Message message) {
-        System.out.println(message);
         return messageRepository.save(message);
     }
 
