@@ -10,9 +10,8 @@
     <div class="content">
         <h1>Welcome</h1>
         <form id="welcome-form" action="" method="post">
-            <input type="hidden" th:field="${user.id}" />
             <div>
-                Name: <input type="text" th:field="${user.name}" id="username">
+                Name: <input type="text" id="username">
             </div>
             <p id="error-msg" style="color:red;"></p>
             <input type="submit" value="Enter">

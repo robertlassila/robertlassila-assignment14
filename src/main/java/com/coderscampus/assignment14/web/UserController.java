@@ -49,8 +49,7 @@ public class UserController {
     }
 
     @PostMapping("/welcome")
-    public String welcomePost(User user) {
-        userService.save(user);
+    public String welcomePost() {
         return "redirect:/channels";
     }
 
@@ -81,11 +80,10 @@ public class UserController {
     @PostMapping("/channels/{channelId}")
     public String channelsPost(@PathVariable Long channelId, Message message, String username) {
         Optional<Channel> channelOpt = channelService.findById(channelId);
-        Optional<User> userOpt = userService.findByName(username);
 
-        if (channelOpt.isPresent() && userOpt.isPresent()) {
+        if (channelOpt.isPresent()) {
             message.setChannel(channelOpt.get());
-            message.setUser(userOpt.get());
+            message.setUsername(username);
             messageService.saveMessage(message);
         }
         return "redirect:/channels/" + channelId;

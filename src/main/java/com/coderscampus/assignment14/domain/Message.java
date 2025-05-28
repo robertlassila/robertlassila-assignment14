@@ -15,6 +15,7 @@ public class Message {
     @ManyToOne
     @JoinColumn(name = "channel_id")
     Channel channel;
+    String username;
 
     public Message(Long id, String content, User user, Channel channel) {
         this.id = id;
@@ -24,6 +25,14 @@ public class Message {
     }
 
     public Message() {}
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public Long getId() {
         return id;
