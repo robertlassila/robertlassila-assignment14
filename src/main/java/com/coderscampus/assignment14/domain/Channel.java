@@ -6,11 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
-@Entity
 public class Channel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     String name;
 

@@ -2,13 +2,17 @@ package com.coderscampus.assignment14.repository;
 
 import com.coderscampus.assignment14.domain.Channel;
 import com.coderscampus.assignment14.domain.Message;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface MessageRepository extends JpaRepository<Message, Long> {
+public interface MessageRepository {
 
-    public List<Message> findAll();
+    List<Message> findAll();
+    Optional<Message> findById(Long id);
+    Message save(Message message);
+    void deleteById(Long id);
 
-    List<Message> findByChannel(Channel channel);
+
+
 }

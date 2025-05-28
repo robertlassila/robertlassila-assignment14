@@ -1,7 +1,7 @@
 package com.coderscampus.assignment14.service;
 
 import com.coderscampus.assignment14.domain.Channel;
-import com.coderscampus.assignment14.repository.ChannelRepository;
+import com.coderscampus.assignment14.repository.InMemoryChannelRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,10 +11,10 @@ import java.util.Optional;
 @Service
 public class ChannelService {
 
-    private final ChannelRepository channelRepository;
+    private final InMemoryChannelRepository inMemoryChannelRepository;
 
-    public ChannelService(ChannelRepository channelRepository) {
-        this.channelRepository = channelRepository;
+    public ChannelService(InMemoryChannelRepository inMemoryChannelRepository) {
+        this.inMemoryChannelRepository = inMemoryChannelRepository;
     }
 
     public List<Channel> createChannels() {
@@ -24,18 +24,18 @@ public class ChannelService {
             channel.setName("Channel " + (i + 1));
             channels.add(channel);
         }
-        channelRepository.saveAll(channels);
+        inMemoryChannelRepository.saveAll(channels);
         return channels;
     }
 
     public Optional<Channel> findById(Long id) {
-        return channelRepository.findById(id);
+        return inMemoryChannelRepository.findById(id);
     }
 
     public List<Channel> findAll() {
-        if (channelRepository.count() == 0) {
+        if (inMemoryChannelRepository.count() == 0) {
             createChannels();
         }
-        return channelRepository.findAll();
+        return inMemoryChannelRepository.findAll();
     }
 }

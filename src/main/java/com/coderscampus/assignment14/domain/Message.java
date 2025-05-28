@@ -2,15 +2,11 @@ package com.coderscampus.assignment14.domain;
 
 import jakarta.persistence.*;
 
-@Entity
+
 public class Message {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     String content;
-    @ManyToOne
-    @JoinColumn(name = "channel_id")
     Channel channel;
     String username;
 
