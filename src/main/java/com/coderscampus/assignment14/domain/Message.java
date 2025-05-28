@@ -1,7 +1,5 @@
 package com.coderscampus.assignment14.domain;
 
-import jakarta.persistence.*;
-
 
 public class Message {
 
@@ -17,7 +15,8 @@ public class Message {
         this.username = username;
     }
 
-    public Message() {}
+    public Message() {
+    }
 
     public String getUsername() {
         return username;

@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
 public class InMemoryMessageRepository implements MessageRepository {
-    
+
     private final Map<Long, Message> storage = new HashMap<>();
     private final AtomicLong idGenerator = new AtomicLong(0);
 

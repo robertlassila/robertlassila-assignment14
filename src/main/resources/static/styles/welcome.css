@@ -2,7 +2,25 @@ body {
     color: white;
 }
 
-
 h1 {
     margin-top: 10px;
+}
+
+
+.enter-button {
+    border-color: transparent;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    background-color: #00803a;
+    padding: 5px 5px;
+    padding-right: 20px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.enter-button:hover {
+    background-color: #3e1c60;
+    color: white;
+    box-shadow: -5px -3px 10px #020255 ;
 }
