@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" style="background: linear-gradient(to bottom right, #020255, #00803a, purple);">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Channel</title>
     <link rel="stylesheet" type="text/css" th:href="@{styles/general.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{styles/channels.css}">
 </head>
 <body th:attr="data-channel-id=${channel.id}">
     <div th:if="${channel.id == null}" class="content">
@@ -15,7 +16,9 @@
     </div>
 
     <div th:if="${channel.id != null}" class="content">
-        <h3 th:text="'Channel: ' + ${channel.name}"></h3>
+
+
+        <h3 th:text="${channel.name}"></h3>
         <input type="hidden" id="channelId" th:value="${channel.id}" />
         <div id="message-display">
             <div th:each="message : ${allMessages}"

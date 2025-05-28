@@ -1,0 +1,11 @@
+.content {
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    background-color: #232323;
+    border-radius: 10px;
+    padding: 20px 30px;
+
+}
