@@ -2,10 +2,8 @@ package com.coderscampus.assignment14.web;
 
 import com.coderscampus.assignment14.domain.Channel;
 import com.coderscampus.assignment14.domain.Message;
-import com.coderscampus.assignment14.domain.User;
 import com.coderscampus.assignment14.service.ChannelService;
 import com.coderscampus.assignment14.service.MessageService;
-import com.coderscampus.assignment14.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,14 +16,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class UserController {
+public class MessageController {
 
-    private final UserService userService;
     private final MessageService messageService;
     private final ChannelService channelService;
 
-    public UserController(UserService userService, MessageService messageService, ChannelService channelService) {
-        this.userService = userService;
+    public MessageController(MessageService messageService, ChannelService channelService) {
         this.messageService = messageService;
         this.channelService = channelService;
 
@@ -44,7 +40,6 @@ public class UserController {
 
     @GetMapping("/welcome")
     public String welcome(ModelMap model) {
-        model.put("user", new User());
         return "welcome";
     }
 

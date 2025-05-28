@@ -9,8 +9,4 @@ import java.util.List;
 @Repository
 public interface ChannelRepository extends JpaRepository<Channel, Long> {
 
-    //void saveChannels(List<Channel> channels);
-
-
-
 }

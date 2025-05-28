@@ -10,18 +10,15 @@ public class Message {
     Long id;
     String content;
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    User user;
-    @ManyToOne
     @JoinColumn(name = "channel_id")
     Channel channel;
     String username;
 
-    public Message(Long id, String content, User user, Channel channel) {
+    public Message(Long id, String content, Channel channel, String username) {
         this.id = id;
         this.content = content;
-        this.user = user;
         this.channel = channel;
+        this.username = username;
     }
 
     public Message() {}
@@ -48,14 +45,6 @@ public class Message {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Channel getChannel() {

@@ -21,7 +21,7 @@ public class ChannelService {
         List<Channel> channels = new ArrayList<>();
         for (int i = 0; i < 4; i++){
             Channel channel = new Channel();
-            channel.setName("Channel " + i);
+            channel.setName("Channel " + (i + 1));
             channels.add(channel);
         }
         channelRepository.saveAll(channels);
