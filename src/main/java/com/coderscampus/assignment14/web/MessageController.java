@@ -72,7 +72,7 @@ public class MessageController {
         return "redirect:/channels/{channelId}";
     }
 
-    @PostMapping("/channels/{channelId}")
+    @PostMapping("/chatpage/{channelId}")
     public String channelsPost(@PathVariable Long channelId, Message message, String username) {
         Optional<Channel> channelOpt = channelService.findById(channelId);
 
@@ -81,10 +81,10 @@ public class MessageController {
             message.setUsername(username);
             messageService.saveMessage(message);
         }
-        return "redirect:/channels/" + channelId;
+        return "redirect:/chatpage/" + channelId;
     }
 
-    @GetMapping("/channels/{channelId}")
+    @GetMapping("/chatpage/{channelId}")
     public String channelId(ModelMap model, @PathVariable("channelId") Long id) {
     Optional<Channel> channel = channelService.findById(id);
     if (channel.isEmpty()) {
@@ -94,7 +94,7 @@ public class MessageController {
     model.put("channelList", channelService.findAll());
     model.put("allMessages", messageService.findAll());
     model.put("message", new Message());
-    return "channels";
+    return "chatpage";
 }
 
     @GetMapping("")

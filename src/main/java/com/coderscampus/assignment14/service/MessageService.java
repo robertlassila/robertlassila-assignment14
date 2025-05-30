@@ -27,4 +27,5 @@ public class MessageService {
     public List<Message> findByChannel(Channel channel) {
         return inMemoryMessageRepository.findByChannel(channel);
     }
+
 }
