@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{styles/general.css}">
     <link rel="stylesheet" type="text/css" th:href="@{styles/channels.css}">
 </head>
-<body>
+<body th:attr="data-channel-id=${channel.id}">
     <h3 th:text="${channel.name}"></h3>
     <input type="hidden" id="channelId" th:value="${channel.id}"/>
     <div id="message-display">

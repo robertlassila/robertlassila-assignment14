@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{styles/general.css}">
     <link rel="stylesheet" type="text/css" th:href="@{styles/channels.css}">
 </head>
-<body th:attr="data-channel-id=${channel.id}">
+<body>
 <div th:if="${channel.id == null}" class="content">
     <h1>Directory</h1>
     <div th:each="channelItem : ${channelList}" class="directory-channel">
