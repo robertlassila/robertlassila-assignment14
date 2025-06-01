@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat Page</title>
-    <link rel="stylesheet" type="text/css" th:href="@{styles/general.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{styles/channels.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/general.css}" href="/styles/general.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/channels.css}" href="/styles/channels.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/chatpage.css}" href="/styles/chatpage.css">
 </head>
-<body th:attr="data-channel-id=${channel.id}">
+<body th:attr="data-channel-id=${channel.id}" class="content">
     <h3 th:text="${channel.name}"></h3>
     <input type="hidden" id="channelId" th:value="${channel.id}"/>
     <div id="message-display">
@@ -22,10 +23,10 @@
 
     <form th:action="@{/chatpage/{channelId}(channelId=${channel.id})}" method="post">
         <input type="hidden" id="messageUsername" name="username" th:field="*{message.username}"/>
-        <input type="text" th:field="*{message.content}" placeholder="Type a message..."/>
-        <input type="submit" value="Send"/>
+        <input type="text" th:field="*{message.content}" placeholder="Type a message..." id="text-input"/>
+        <input type="submit" value="Send" class="send-button"/>
     </form>
-    <a href="/channels">Back</a>
+    <a href="/channels" class="back-button">Back</a>
 
 <script src="/javascript/channels.js"></script>
 </body>
