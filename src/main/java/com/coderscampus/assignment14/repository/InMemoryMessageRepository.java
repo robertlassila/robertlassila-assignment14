@@ -8,22 +8,19 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
-public class InMemoryMessageRepository implements MessageRepository {
+public class InMemoryMessageRepository {
 
     private final Map<Long, Message> storage = new HashMap<>();
     private final AtomicLong idGenerator = new AtomicLong(0);
 
-    @Override
     public List<Message> findAll() {
         return new ArrayList<>(storage.values());
     }
 
-    @Override
     public Optional<Message> findById(Long id) {
         return Optional.ofNullable(storage.get(id));
     }
 
-    @Override
     public Message save(Message message) {
         if (message.getId() == null) {
             message.setId(idGenerator.incrementAndGet());
@@ -32,7 +29,6 @@ public class InMemoryMessageRepository implements MessageRepository {
         return message;
     }
 
-    @Override
     public void deleteById(Long id) {
         storage.remove(id);
     }
